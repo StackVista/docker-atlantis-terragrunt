@@ -1,0 +1,26 @@
+image: docker:stable
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://localhost:2375/
+
+stages:
+  - build
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+
+docker:
+  stage: build
+  tags:
+    - k8s-medium
+  script:
+    - docker login --username ${dockerhub_username} --password ${dockerhub_password}
+    - docker build -t stackstate/atlantis-terragrunt:$CI_BUILD_REF_NAME .
+    - docker tag stackstate/atlantis-terragrunt:$CI_BUILD_REF_NAME stackstate/atlantis-terragrunt:latest
+    - docker tag stackstate/atlantis-terragrunt:$CI_BUILD_REF_NAME stackstate/atlantis-terragrunt:$CI_PIPELINE_IID
+    - docker push stackstate/atlantis-terragrunt:$CI_PIPELINE_IID
+    - docker push stackstate/atlantis-terragrunt:$CI_BUILD_REF_NAME
+    - docker push stackstate/atlantis-terragrunt:latest
