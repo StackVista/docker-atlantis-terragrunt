@@ -1,4 +1,4 @@
-FROM runatlantis/atlantis:v0.8.3
+FROM runatlantis/atlantis:latest
 
 ARG TERRAGRUNT_VERSION="v0.19.9"
 RUN curl -fSL https://github.com/gruntwork-io/terragrunt/releases/download/$TERRAGRUNT_VERSION/terragrunt_linux_amd64 \
