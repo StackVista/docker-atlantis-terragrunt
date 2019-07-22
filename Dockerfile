@@ -14,5 +14,5 @@ RUN curl -fSL https://github.com/mozilla/sops/releases/download/$SOPS_VERSION/so
 
 ARG KUBECTL_VERSION="v1.15.1"
 RUN curl -fSL https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl \
-      -o $LOCAL_BIN/kubectl
+      -o $LOCAL_BIN/kubectl \
     && chmod +x $LOCAL_BIN/kubectl
