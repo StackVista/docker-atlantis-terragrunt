@@ -6,7 +6,7 @@ ARG TERRAGRUNT_VERSION="v0.21.6"
 ADD https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 $LOCAL_BIN/terragrunt
 RUN chmod +x $LOCAL_BIN/terragrunt
 
-ARG SOPS_VERSION="3.5.0"
+ARG SOPS_VERSION="v3.5.0"
 ADD https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux $LOCAL_BIN/sops
 RUN chmod +x $LOCAL_BIN/sops
 
