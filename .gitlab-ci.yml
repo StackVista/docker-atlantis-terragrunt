@@ -12,5 +12,5 @@ docker:
   stage: build
   script:
     - echo "${docker_password}" | docker login --username=${docker_user} --password-stdin docker.io
-    - docker build --tag stackstate/atlantis-terragrunt:${CI_BUILD_REF_NAME} --tag stackstate/atlantis-terragrunt:${CI_COMMIT_SHORT_SHA} --tag stackstate/atlantis-terragrunt:latest .
+    - docker build --squash --compress --no-cache --tag stackstate/atlantis-terragrunt:${CI_BUILD_REF_NAME} --tag stackstate/atlantis-terragrunt:${CI_COMMIT_SHORT_SHA} --tag stackstate/atlantis-terragrunt:latest .
     - for tag in latest ${CI_BUILD_REF_NAME} ${CI_COMMIT_SHORT_SHA} ; do docker push stackstate/atlantis-terragrunt:$tag ; done
