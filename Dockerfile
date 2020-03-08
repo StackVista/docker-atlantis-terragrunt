@@ -4,7 +4,7 @@ LABEL maintainer="Scott Crooks <scrooks@stackstate.com>"
 
 ENV LOCAL_BIN=/usr/local/bin
 
-ARG TERRAFORM_VERSION="0.12.20"
+ARG TERRAFORM_VERSION="0.12.23"
 RUN set -ex \
     && apk add --no-cache --virtual .build-dependencies curl unzip \
     && curl -fSL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" -o /tmp/terraform.zip \
@@ -14,7 +14,7 @@ RUN set -ex \
     && rm -f /tmp/terraform* \
     && apk del .build-dependencies
 
-ARG TERRAGRUNT_VERSION="v0.22.3"
+ARG TERRAGRUNT_VERSION="v0.23.0"
 ADD https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 ${LOCAL_BIN}/terragrunt
 RUN chmod +x ${LOCAL_BIN}/terragrunt
 
