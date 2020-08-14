@@ -1,6 +1,6 @@
-FROM docker.io/runatlantis/atlantis:v0.11.1
+FROM docker.io/runatlantis/atlantis:v0.14.0
 
-LABEL maintainer="Scott Crooks <scrooks@stackstate.com>"
+LABEL maintainer="Vincent Partington <vpartington@stackstate.com>"
 
 ENV \
     LOCAL_DIR=/usr/local \
