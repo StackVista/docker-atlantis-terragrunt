@@ -27,7 +27,7 @@ RUN set -ex \
         -o ${LOCAL_DIR}/bin/terragrunt \
     && chmod +x ${LOCAL_DIR}/bin/terragrunt
 
-ARG SOPS_VERSION="v3.5.0"
+ARG SOPS_VERSION="v3.6.0"
 RUN set -ex \
     && curl -fSL "https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux" \
         -o ${LOCAL_DIR}/bin/sops \
