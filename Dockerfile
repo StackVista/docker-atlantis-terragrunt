@@ -11,7 +11,7 @@ ENV PATH="$PATH:$LOCAL_DIR/google-cloud-sdk/bin"
 RUN set -ex \
     && apk add --no-cache ${PERSISTENT_PACKAGES}
 
-ARG TERRAFORM_VERSION="0.12.24"
+ARG TERRAFORM_VERSION="0.13.0"
 RUN set -ex \
     && apk add --no-cache --virtual .build-dependencies unzip \
     && curl -fSL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" -o /tmp/terraform.zip \
@@ -21,7 +21,7 @@ RUN set -ex \
     && rm -f /tmp/terraform* \
     && apk del .build-dependencies
 
-ARG TERRAGRUNT_VERSION="v0.23.2"
+ARG TERRAGRUNT_VERSION="v0.23.33"
 RUN set -ex \
     && curl -fSL "https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64" \
         -o ${LOCAL_DIR}/bin/terragrunt \
