@@ -11,7 +11,7 @@ ENV PATH="$PATH:$LOCAL_DIR/google-cloud-sdk/bin"
 RUN set -ex \
     && apk add --no-cache ${PERSISTENT_PACKAGES}
 
-ARG TERRAFORM_VERSION="0.13.0"
+ARG TERRAFORM_VERSION="0.13.2"
 RUN set -ex \
     && apk add --no-cache --virtual .build-dependencies unzip \
     && curl -fSL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" -o /tmp/terraform.zip \
